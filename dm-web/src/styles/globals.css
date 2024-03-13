@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-gray-100;
+}
+
 .primary-button {
   @apply text-white px-6 py-2 border-none rounded-full outline-none 
   hover:cursor-pointer hover:opacity-80 bg-blue-600;
@@ -9,5 +13,5 @@
 
 .secondary-button {
   @apply text-white px-6 py-2 border-none rounded-full outline-none 
-  hover:cursor-pointer hover:opacity-80 bg-blue-400;
+  hover:cursor-pointer hover:opacity-80 bg-gray-400;
 }
