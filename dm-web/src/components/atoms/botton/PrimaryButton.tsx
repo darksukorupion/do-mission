@@ -6,5 +6,5 @@ type Button = {
 
 export const PrimaryButton = (props: Button) => {
   const { children } = props;
-  return <button className={``}>{children}</button>;
+  return <button className={`primary-button`}>{children}</button>;
 };
