@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get "/missions/:id" => "missions#show"
   # ミッション作成
   post "/missions" => "missions#create"
+  #ミッション編集
+  post "/missions/:id/update" => "missions#update"
+  #ミッション削除
+  post "/missions/:id/delete" => "missions#delete"
 end

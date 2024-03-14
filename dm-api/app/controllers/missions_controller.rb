@@ -13,6 +13,18 @@ class MissionsController < ApplicationController
     Mission.create(mission_params)
     head :created
   end
+
+  def update
+    mission = Mission.find(params[:id])
+    mission.update(mission_params) 
+    head :created
+  end
+
+  def delete
+    mission = Mission.find(params[:id])
+    mission.destroy
+    head :created
+  end
    
   private
  
