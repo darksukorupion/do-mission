@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { PrimaryButton } from "@/components/atoms/botton/PrimaryButton";
 import { axiosInstance } from "@/utils/axios";
 
+import React from "react";
+
 type Missions = {
   id: number;
   title: string;
@@ -29,10 +31,9 @@ export default function MissionsIndex() {
     <>
       <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
         <h1 className={`text-5xl`}>ユーザーのホーム画面</h1>
-
         <div>
           <p className={`mt-10`}>ミッション一覧</p>
-          <ul className={`w-1/3 mx-auto`}>
+          <ul className={`mx-auto w-1/2`}>
             {missions?.map((mission) => (
               <Link href={`/missions/${mission.id}`} key={mission.id}>
                 <div
@@ -46,11 +47,11 @@ export default function MissionsIndex() {
               </Link>
             ))}
           </ul>
-        </div>
-        <div className={`pt-10`}>
-          <PrimaryButton>
-            <Link href="/missions/create">ミッションを新規作成</Link>
-          </PrimaryButton>
+          <div className={`pt-10`}>
+            <PrimaryButton>
+              <Link href="/missions/create">ミッションを新規作成</Link>
+            </PrimaryButton>
+          </div>
         </div>
       </div>
     </>
