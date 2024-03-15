@@ -11,4 +11,16 @@ Rails.application.routes.draw do
   post "/missions/:id/update" => "missions#update"
   #ミッション削除
   post "/missions/:id/delete" => "missions#delete"
+
+  # ユーザー一覧
+  get "/users" => "users#index"
+  # ユーザー詳細  
+  get "/users/:id" => "users#show"
+  # ユーザー作成
+  post "/users" => "users#create"
+  #ユーザー編集
+  post "/users/:id/update" => "users#update"
+  #ユーザー削除
+  post "/users/:id/delete" => "users#delete"
+
 end

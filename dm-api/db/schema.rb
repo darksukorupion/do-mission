@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_12_135928) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_15_153447) do
   create_table "missions", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "summary"
     t.integer "achivement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.string "profile_image"
+    t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
