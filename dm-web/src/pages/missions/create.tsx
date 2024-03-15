@@ -1,14 +1,24 @@
 import Link from "next/link";
-import { useState } from "react";
-import { axiosInstance } from "../../utils/axios";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { axiosInstance } from "../../utils/axios";
+
+type DataForm = {
+  title: string;
+  summary: string;
+};
 
 export default function MissionCreate() {
-  const [title, setTitle] = useState("");
-  const [summary, setSummary] = useState("");
   const router = useRouter();
 
-  const onClick = async () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<DataForm>();
+
+  const onSubmit = async (data: DataForm) => {
+    const { title, summary } = data;
     await axiosInstance.post("/missions", { title, summary });
     router.push("/missions");
   };
@@ -18,29 +28,37 @@ export default function MissionCreate() {
       <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
         <h1 className={`text-4xl`}>ミッションの新規作成</h1>
         <p>タイトル、概要を入力してください</p>
-
-        <p>ミッションタイトル</p>
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="ミッションタイトル">ミッションタイトル</label>
           <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            id="title"
+            type="text"
+            {...register("title", {
+              required: "タイトルは必須です",
+              maxLength: { value: 20, message: "20文字以内にしてください" },
+            })}
             className={`border border-gray-400 w-1/3`}
           />
-        </div>
-        <p>概要</p>
-        <div>
-          <textarea
-            value={summary}
-            onChange={(e) => setSummary(e.target.value)}
-            className={`border border-gray-400 w-1/3 h-32`}
-          />
-        </div>
+          <p>{errors.title?.message}</p>
 
-        <div>
-          <button onClick={onClick} className={`primary-button`}>
-            ミッションを作成する
-          </button>
-        </div>
+          <label htmlFor="概要">概要</label>
+          <input
+            id="summary"
+            type="text"
+            {...register("summary", {
+              required: "概要は必須です",
+              maxLength: { value: 60, message: "60文字以内にしてください" },
+            })}
+            className={`border border-gray-400 w-1/3`}
+          />
+          <p>{errors.summary?.message}</p>
+
+          <div>
+            <button type="submit" className={`primary-button`}>
+              ミッションを作成する
+            </button>
+          </div>
+        </form>
 
         <div>
           <Link
