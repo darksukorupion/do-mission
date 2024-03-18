@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def login
+    
+  end
+  
+  
   def index
     users = User.all
     render json: users

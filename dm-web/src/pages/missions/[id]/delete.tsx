@@ -52,15 +52,12 @@ export default function MissionEdit({
 }: {
   missionData: Missions;
 }) {
-  const [title, setTitle] = useState(missionData.title);
-  const [summary, setSummary] = useState(missionData.summary);
+  const title = missionData.title;
+  const summary = missionData.summary;
   const router = useRouter();
 
   const onClick = async () => {
-    await axiosInstance.post(`/missions/${missionData.id}/delete`, {
-      title,
-      summary,
-    });
+    await axiosInstance.delete(`/missions/${missionData.id}`);
     router.push("/missions");
   };
 
@@ -72,10 +69,10 @@ export default function MissionEdit({
           className={`border-none bg-white w-1/2 mx-auto py-4 rounded-2xl shadow-lg`}
         >
           <div className={`mt-4`}>
-            <p>{missionData.title}</p>
+            <p>{title}</p>
           </div>
           <div className={`mt-4 font-normal text-lg`}>
-            <p>{missionData.summary}</p>
+            <p>{summary}</p>
           </div>
 
           <div className={`mt-6`}>

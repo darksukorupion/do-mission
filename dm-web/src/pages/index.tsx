@@ -11,6 +11,17 @@ export default function Home() {
           <PrimaryButton>
             <Link href="/about">DO MISSIONとは？</Link>
           </PrimaryButton>
+          <br />
+          <div className={`mt-6`}>
+            <PrimaryButton>
+              <Link href="/signup">ユーザー登録</Link>
+            </PrimaryButton>
+          </div>
+          <div className={`mt-6`}>
+            <PrimaryButton>
+              <Link href="/login">ログイン</Link>
+            </PrimaryButton>
+          </div>
         </div>
       </div>
     </>

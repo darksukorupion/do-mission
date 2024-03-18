@@ -35,7 +35,7 @@ export default function UsersIndex() {
         <div>
           <ul className={`mx-auto w-1/2`}>
             {users?.map((user) => (
-              <Link href={`/missions/${user.id}`} key={user.id}>
+              <Link href={`/users/${user.id}`} key={user.id}>
                 <div
                   className={`mt-2 bg-white border-none py-4 rounded-2xl shadow-lg mx-auto flex justify-center gap-4`}
                 >
@@ -48,7 +48,7 @@ export default function UsersIndex() {
           </ul>
           <div className={`pt-10`}>
             <PrimaryButton>
-              <Link href="/missions/create">ユーザーを新規作成</Link>
+              <Link href="/missions">ホームへ</Link>
             </PrimaryButton>
           </div>
         </div>

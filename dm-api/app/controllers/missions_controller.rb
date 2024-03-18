@@ -20,7 +20,7 @@ class MissionsController < ApplicationController
     head :created
   end
 
-  def delete
+  def destroy
     mission = Mission.find(params[:id])
     mission.destroy
     head :created

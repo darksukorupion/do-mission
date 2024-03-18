@@ -67,7 +67,7 @@ export default function MissionEdit({
 
   const onSubmit = async (data: DataForm) => {
     const { title, summary } = data;
-    await axiosInstance.post(`/missions/${missionData.id}/update`, {
+    await axiosInstance.put(`/missions/${missionData.id}`, {
       title,
       summary,
     });
@@ -81,34 +81,41 @@ export default function MissionEdit({
         <p>ミッションタイトル</p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="ミッションタイトル">ミッションタイトル</label>
+          <label htmlFor="ミッションタイトル">タイトル</label>
+          <br />
           <input
             id="title"
             type="text"
+            placeholder="タイトルを入力しよう"
             defaultValue={missionData.title}
             {...register("title", {
               required: "タイトルは必須です",
               maxLength: { value: 20, message: "20文字以内にしてください" },
             })}
-            className={`border border-gray-400 w-1/3`}
+            className={`border-2 w-1/3 bg-white border-gray-300 p-2 rounded-xl`}
           />
-          <p>{errors.title?.message}</p>
+          <p className={`font-normal text-lg text-red-500`}>
+            {errors.title?.message}
+          </p>
 
           <label htmlFor="概要">概要</label>
-          <input
+          <br />
+          <textarea
             id="summary"
-            type="text"
+            placeholder="具体的な内容を入力しよう"
             defaultValue={missionData.summary}
             {...register("summary", {
               required: "概要は必須です",
               maxLength: { value: 60, message: "60文字以内にしてください" },
             })}
-            className={`border border-gray-400 w-1/3`}
+            className={`border-2 w-1/3 bg-white border-gray-300 p-2 rounded-xl h-32 resize-none`}
           />
-          <p>{errors.summary?.message}</p>
+          <p className={`font-normal text-lg text-red-500`}>
+            {errors.summary?.message}
+          </p>
 
           <div>
-            <button type="submit" className={`primary-button`}>
+            <button type="submit" className={`primary-button mt-4`}>
               ミッションを編集する
             </button>
           </div>
