@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { axiosInstance } from "../../../utils/axios";
+import { useRouter } from "next/router";
 
 type Users = {
   id: number;
@@ -46,33 +47,34 @@ export async function getStaticPaths() {
   };
 }
 
-export default function UserShow({ userData }: { userData: Users }) {
+export default function UserDelete({ userData }: { userData: Users }) {
+  const name = userData.name;
+  const email = userData.email;
+  const router = useRouter();
+
+  const onClick = async () => {
+    await axiosInstance.delete(`/users/${userData.id}`);
+    router.push("/users");
+  };
+
   return (
     <>
       <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
-        <h1 className={`text-4xl`}>ユーザー詳細</h1>
+        <h1 className={`text-4xl`}>本当に削除しますか？</h1>
         <div
           className={`border-none bg-white w-1/2 mx-auto py-4 rounded-2xl shadow-lg`}
         >
           <div className={`mt-4`}>
-            <p>{userData.name}</p>
+            <p>{name}</p>
           </div>
           <div className={`mt-4 font-normal text-lg`}>
-            <p>{userData.email}</p>
+            <p>{email}</p>
           </div>
-          <div className={`flex justify-end gap-3 mr-5`}>
-            <Link
-              href={`/users/${userData.id}/edit`}
-              className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
-            >
-              編集
-            </Link>
-            <Link
-              href={`/users/${userData.id}/delete`}
-              className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
-            >
-              削除
-            </Link>
+
+          <div className={`mt-6`}>
+            <button onClick={onClick} className={`secondary-button`}>
+              ユーザーを削除
+            </button>
           </div>
         </div>
         <div>

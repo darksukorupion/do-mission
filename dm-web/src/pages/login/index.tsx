@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { axiosInstance } from "../utils/axios";
+import { axiosInstance } from "../../utils/axios";
 
 type LoginForm = {
   email: string;
   password: string;
 };
 
-export default function UserLogin() {
+export default function LoginIndex() {
   const router = useRouter();
 
   const {
