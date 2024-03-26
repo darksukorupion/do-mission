@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { axiosInstance } from "../../../utils/axios";
 import { useRouter } from "next/router";
+import { Card } from "@/components/atoms/card/card";
 
 type Users = {
   id: number;
@@ -59,29 +60,26 @@ export default function UserDelete({ userData }: { userData: Users }) {
 
   return (
     <>
-      <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
-        <h1 className={`text-4xl`}>本当に削除しますか？</h1>
-        <div
-          className={`border-none bg-white w-1/2 mx-auto py-4 rounded-2xl shadow-lg`}
-        >
-          <div className={`mt-4`}>
-            <p>{name}</p>
-          </div>
-          <div className={`mt-4 font-normal text-lg`}>
-            <p>{email}</p>
-          </div>
-
-          <div className={`mt-6`}>
-            <button onClick={onClick} className={`secondary-button`}>
-              ユーザーを削除
-            </button>
-          </div>
+      <div className={`text-center space-y-4 pt-10`}>
+        <h1 className={`headingMd`}>本当に削除しますか？</h1>
+        <div className={`mx-auto stdWidth`}>
+          <Card>
+            <div className={`py-4 space-y-4`}>
+              <div>
+                <p>{name}</p>
+              </div>
+              <div className={`font-normal`}>
+                <p>{email}</p>
+              </div>
+            </div>
+          </Card>
         </div>
+
+        <button onClick={onClick} className={`delete-button`}>
+          ユーザーを削除
+        </button>
         <div>
-          <Link
-            href="/users"
-            className={`mx-auto text-blue-600 hover:text-blue-400`}
-          >
+          <Link href="/users" className={`link`}>
             戻る
           </Link>
         </div>

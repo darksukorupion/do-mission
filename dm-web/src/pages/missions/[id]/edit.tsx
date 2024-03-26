@@ -76,12 +76,10 @@ export default function MissionEdit({
 
   return (
     <>
-      <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
-        <h1 className={`text-4xl`}>ミッション編集</h1>
-        <p>ミッションタイトル</p>
-
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="ミッションタイトル">タイトル</label>
+      <div className={`text-center space-y-4 pt-10`}>
+        <h1 className={`headingMd`}>ミッション編集</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className={`space-y-2`}>
+          <label htmlFor="タイトル">タイトル</label>
           <br />
           <input
             id="title"
@@ -92,11 +90,9 @@ export default function MissionEdit({
               required: "タイトルは必須です",
               maxLength: { value: 20, message: "20文字以内にしてください" },
             })}
-            className={`border-2 w-1/3 bg-white border-gray-300 p-2 rounded-xl`}
+            className={`input stdWidth`}
           />
-          <p className={`font-normal text-lg text-red-500`}>
-            {errors.title?.message}
-          </p>
+          <p className={`error`}>{errors.title?.message}</p>
 
           <label htmlFor="概要">概要</label>
           <br />
@@ -108,25 +104,20 @@ export default function MissionEdit({
               required: "概要は必須です",
               maxLength: { value: 60, message: "60文字以内にしてください" },
             })}
-            className={`border-2 w-1/3 bg-white border-gray-300 p-2 rounded-xl h-32 resize-none`}
+            className={`input stdWidth h-40 resize-none`}
           />
-          <p className={`font-normal text-lg text-red-500`}>
-            {errors.summary?.message}
-          </p>
+          <p className={`error`}>{errors.summary?.message}</p>
 
           <div>
-            <button type="submit" className={`primary-button mt-4`}>
+            <button type="submit" className={`primary-button`}>
               ミッションを編集する
             </button>
           </div>
         </form>
 
         <div>
-          <Link
-            href="/missions"
-            className={`mx-auto text-blue-600 hover:text-blue-400`}
-          >
-            戻る
+          <Link href="/missions/" className={`link`}>
+            ← 戻る
           </Link>
         </div>
       </div>

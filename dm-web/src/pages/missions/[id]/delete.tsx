@@ -63,27 +63,24 @@ export default function MissionEdit({
 
   return (
     <>
-      <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
-        <h1 className={`text-4xl`}>本当に削除しますか？</h1>
-        <div className={`w-1/2 mx-auto`}>
+      <div className={`text-center space-y-4 pt-10`}>
+        <h1 className={`headingMd`}>本当に削除しますか？</h1>
+        <div className={`mx-auto stdWidth`}>
           <Card>
             <div className={`py-4 space-y-4`}>
               <p>{title}</p>
-              <div className={`font-normal text-xl`}>
+              <div className={`font-normal`}>
                 <p>{summary}</p>
               </div>
-              <button onClick={onClick} className={`secondary-button`}>
+              <button onClick={onClick} className={`delete-button`}>
                 ミッションを削除
               </button>
             </div>
           </Card>
         </div>
         <div>
-          <Link
-            href="/missions"
-            className={`mx-auto text-blue-600 hover:text-blue-400`}
-          >
-            戻る
+          <Link href="/missions" className={`link`}>
+            ← 戻る
           </Link>
         </div>
       </div>

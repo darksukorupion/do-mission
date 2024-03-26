@@ -53,25 +53,25 @@ export default function MissionShow({
 }) {
   return (
     <>
-      <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
-        <h1 className={`text-4xl`}>ミッション詳細</h1>
-        <div className={`w-1/2 mx-auto`}>
+      <div className={`text-center space-y-4 pt-10`}>
+        <h1 className={`headingMd`}>ミッション詳細</h1>
+        <div className={`stdWidth mx-auto`}>
           <Card>
-            <div className={`py-4 space-y-4`}>
+            <div className={`p-3 lg:p-4 space-y-3`}>
               <p>{missionData.title}</p>
-              <div className={`font-normal text-xl`}>
+              <div className={`font-normal`}>
                 <p>{missionData.summary}</p>
               </div>
-              <div className={`flex justify-end gap-3 mr-6 `}>
+              <div className={`flex justify-end gap-3`}>
                 <Link
                   href={`/missions/${missionData.id}/edit`}
-                  className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
+                  className={`grayLink`}
                 >
                   編集
                 </Link>
                 <Link
                   href={`/missions/${missionData.id}/delete`}
-                  className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
+                  className={`grayLink`}
                 >
                   削除
                 </Link>
@@ -81,11 +81,8 @@ export default function MissionShow({
         </div>
 
         <div>
-          <Link
-            href="/missions"
-            className={`mx-auto text-blue-600 hover:text-blue-400`}
-          >
-            戻る
+          <Link href="/missions" className={`link`}>
+            ← 戻る
           </Link>
         </div>
       </div>

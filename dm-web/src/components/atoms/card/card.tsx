@@ -7,7 +7,7 @@ type Children = {
 export const Card = (props: Children) => {
   const { children } = props;
   return (
-    <div className={`bg-white border-none rounded-2xl shadow-lg mx-auto mt-2`}>
+    <div className={`bg-white border-none rounded-2xl shadow-md mx-auto mt-3`}>
       {children}
     </div>
   );

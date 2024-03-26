@@ -30,29 +30,27 @@ export default function MissionsIndex() {
 
   return (
     <>
-      <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
-        <h1 className={`text-5xl`}>ユーザーのホーム画面</h1>
+      <div className={`text-center space-y-4 pt-10`}>
+        <h1 className={`headingMd`}>ユーザーのホーム画面</h1>
+        <p>ミッション一覧</p>
+        <ul className={`mx-auto stdWidth`}>
+          {missions?.map((mission) => (
+            <Link href={`/missions/${mission.id}`} key={mission.id}>
+              <Card>
+                <div className={`flex justify-between p-4`}>
+                  <li className={`text-blue-600 hover:text-blue-400  `}>
+                    {mission.title}
+                  </li>
+                  <p>残り3日</p>
+                </div>
+              </Card>
+            </Link>
+          ))}
+        </ul>
         <div>
-          <p className={`mt-10`}>ミッション一覧</p>
-          <ul className={`mx-auto w-1/3`}>
-            {missions?.map((mission) => (
-              <Link href={`/missions/${mission.id}`} key={mission.id}>
-                <Card>
-                  <div className={`flex justify-between p-4`}>
-                    <li className={`text-blue-600 hover:text-blue-400  `}>
-                      {mission.title}
-                    </li>
-                    <p>残り3日</p>
-                  </div>
-                </Card>
-              </Link>
-            ))}
-          </ul>
-          <div className={`pt-10`}>
-            <PrimaryButton>
-              <Link href="/missions/create">ミッションを新規作成</Link>
-            </PrimaryButton>
-          </div>
+          <PrimaryButton>
+            <Link href="/missions/create">ミッションを新規作成</Link>
+          </PrimaryButton>
         </div>
       </div>
     </>

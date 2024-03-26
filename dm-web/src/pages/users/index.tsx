@@ -5,6 +5,7 @@ import { PrimaryButton } from "@/components/atoms/botton/PrimaryButton";
 import { axiosInstance } from "@/utils/axios";
 
 import React from "react";
+import { Card } from "@/components/atoms/card/card";
 
 type Users = {
   id: number;
@@ -30,27 +31,28 @@ export default function UsersIndex() {
 
   return (
     <>
-      <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
-        <h1 className={`text-5xl`}>ユーザー一覧</h1>
+      <div className={`text-center space-y-4 pt-10`}>
+        <h1 className={`headingMd`}>ユーザー一覧</h1>
         <div>
-          <ul className={`mx-auto w-1/2`}>
+          <ul className={`mx-auto stdWidth`}>
             {users?.map((user) => (
               <Link href={`/users/${user.id}`} key={user.id}>
-                <div
-                  className={`mt-2 bg-white border-none py-4 rounded-2xl shadow-lg mx-auto flex justify-center gap-4`}
-                >
-                  <li className={`text-blue-600 hover:text-blue-400  `}>
-                    {user.name}
-                  </li>
-                </div>
+                <Card>
+                  <div className={`flex justify-between p-4`}>
+                    <li className={`text-blue-600 hover:text-blue-400  `}>
+                      {user.name}
+                    </li>
+                    <p>Lv.30</p>
+                  </div>
+                </Card>
               </Link>
             ))}
           </ul>
-          <div className={`pt-10`}>
-            <PrimaryButton>
-              <Link href="/missions">ホームへ</Link>
-            </PrimaryButton>
-          </div>
+        </div>
+        <div>
+          <PrimaryButton>
+            <Link href="/">ホームへ</Link>
+          </PrimaryButton>
         </div>
       </div>
     </>
