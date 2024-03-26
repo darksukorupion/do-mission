@@ -5,6 +5,7 @@ import { PrimaryButton } from "@/components/atoms/botton/PrimaryButton";
 import { axiosInstance } from "@/utils/axios";
 
 import React from "react";
+import { Card } from "@/components/atoms/card/card";
 
 type Missions = {
   id: number;
@@ -33,17 +34,17 @@ export default function MissionsIndex() {
         <h1 className={`text-5xl`}>ユーザーのホーム画面</h1>
         <div>
           <p className={`mt-10`}>ミッション一覧</p>
-          <ul className={`mx-auto w-1/2`}>
+          <ul className={`mx-auto w-1/3`}>
             {missions?.map((mission) => (
               <Link href={`/missions/${mission.id}`} key={mission.id}>
-                <div
-                  className={`mt-2 bg-white border-none py-4 rounded-2xl shadow-lg mx-auto flex justify-center gap-4`}
-                >
-                  <li className={`text-blue-600 hover:text-blue-400  `}>
-                    {mission.title}
-                  </li>
-                  <p>残り3日</p>
-                </div>
+                <Card>
+                  <div className={`flex justify-between p-4`}>
+                    <li className={`text-blue-600 hover:text-blue-400  `}>
+                      {mission.title}
+                    </li>
+                    <p>残り3日</p>
+                  </div>
+                </Card>
               </Link>
             ))}
           </ul>

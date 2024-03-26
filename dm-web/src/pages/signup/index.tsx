@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { axiosInstance } from "../utils/axios";
+import { axiosInstance } from "../../utils/axios";
 
 type UserForm = {
   name: string;
   email: string;
 };
 
-export default function UserCreate() {
+export default function SignupIndex() {
   const router = useRouter();
 
   const {

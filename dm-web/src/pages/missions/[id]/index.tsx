@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { axiosInstance } from "../../../utils/axios";
+import { Card } from "@/components/atoms/card/card";
 
 type Missions = {
   id: number;
@@ -54,30 +55,31 @@ export default function MissionShow({
     <>
       <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
         <h1 className={`text-4xl`}>ミッション詳細</h1>
-        <div
-          className={`border-none bg-white w-1/2 mx-auto py-4 rounded-2xl shadow-lg`}
-        >
-          <div className={`mt-4`}>
-            <p>{missionData.title}</p>
-          </div>
-          <div className={`mt-4 font-normal text-lg`}>
-            <p>{missionData.summary}</p>
-          </div>
-          <div className={`flex justify-end gap-3 mr-5`}>
-            <Link
-              href={`/missions/${missionData.id}/edit`}
-              className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
-            >
-              編集
-            </Link>
-            <Link
-              href={`/missions/${missionData.id}/delete`}
-              className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
-            >
-              削除
-            </Link>
-          </div>
+        <div className={`w-1/2 mx-auto`}>
+          <Card>
+            <div className={`py-4 space-y-4`}>
+              <p>{missionData.title}</p>
+              <div className={`font-normal text-xl`}>
+                <p>{missionData.summary}</p>
+              </div>
+              <div className={`flex justify-end gap-3 mr-6 `}>
+                <Link
+                  href={`/missions/${missionData.id}/edit`}
+                  className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
+                >
+                  編集
+                </Link>
+                <Link
+                  href={`/missions/${missionData.id}/delete`}
+                  className={`text-lg font-normal text-gray-400 hover:text-gray-300`}
+                >
+                  削除
+                </Link>
+              </div>
+            </div>
+          </Card>
         </div>
+
         <div>
           <Link
             href="/missions"

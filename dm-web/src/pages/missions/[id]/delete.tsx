@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { axiosInstance } from "../../../utils/axios";
 import { useRouter } from "next/router";
+import { Card } from "@/components/atoms/card/card";
 
 type Missions = {
   id: number;
@@ -64,21 +65,18 @@ export default function MissionEdit({
     <>
       <div className={`text-2xl font-bold text-center space-y-4 pt-10`}>
         <h1 className={`text-4xl`}>本当に削除しますか？</h1>
-        <div
-          className={`border-none bg-white w-1/2 mx-auto py-4 rounded-2xl shadow-lg`}
-        >
-          <div className={`mt-4`}>
-            <p>{title}</p>
-          </div>
-          <div className={`mt-4 font-normal text-lg`}>
-            <p>{summary}</p>
-          </div>
-
-          <div className={`mt-6`}>
-            <button onClick={onClick} className={`secondary-button`}>
-              ミッションを削除
-            </button>
-          </div>
+        <div className={`w-1/2 mx-auto`}>
+          <Card>
+            <div className={`py-4 space-y-4`}>
+              <p>{title}</p>
+              <div className={`font-normal text-xl`}>
+                <p>{summary}</p>
+              </div>
+              <button onClick={onClick} className={`secondary-button`}>
+                ミッションを削除
+              </button>
+            </div>
+          </Card>
         </div>
         <div>
           <Link

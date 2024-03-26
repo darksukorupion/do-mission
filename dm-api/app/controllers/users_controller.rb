@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     head :created
   end
 
-  def delete
+  def destroy
     user = User.find(params[:id])
     user.destroy
     head :created
