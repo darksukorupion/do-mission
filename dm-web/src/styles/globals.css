@@ -7,26 +7,26 @@ body {
 }
 
 .primary-button {
-  @apply px-4 py-2 text-white bg-blue-600 border-none rounded-full 
-  hover:cursor-pointer hover:opacity-80;
+  @apply px-5 py-2 text-white bg-blue-600 border-none rounded-full 
+  hover:cursor-pointer hover:opacity-80 duration-300;
 }
 
 .secondary-button {
-  @apply px-4 py-2 border-2 border-gray-600 rounded-full 
-  hover:cursor-pointer hover:opacity-80;
+  @apply px-5 py-2 border-2 text-gray-600 border-gray-600 rounded-full 
+  hover:cursor-pointer hover:bg-gray-200 duration-300;
 }
 
 .delete-button {
-  @apply px-4 py-2 text-white bg-red-600 border-none rounded-full 
-  hover:cursor-pointer hover:opacity-80;
+  @apply px-5 py-2 border-2 text-red-600 border-red-600 rounded-full 
+  hover:cursor-pointer hover:bg-red-200 duration-300;
 }
 
 .link {
-  @apply text-blue-600 hover:cursor-pointer hover:opacity-80;
+  @apply text-blue-600 hover:cursor-pointer hover:opacity-80 duration-300;
 }
 
 .grayLink {
-  @apply font-normal text-gray-400 hover:opacity-70;
+  @apply font-normal text-gray-400 hover:opacity-70 duration-300;
 }
 
 .headingLg {

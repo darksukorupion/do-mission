@@ -1,42 +1,16 @@
 import Link from "next/link";
-import { axiosInstance } from "../../../utils/axios";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
-type DataForm = {
-  title: string;
-  summary: string;
-};
-
-type Missions = {
-  id: number;
-  title: string;
-  summary: string;
-  archivement: number | null;
-  dead_line: Date | null;
-  created_at: Date;
-  update_at: Date;
-};
-
-type Params = {
-  params: { id: number };
-};
-
-const getAllMissionIds = async () => {
-  const res = await axiosInstance.get("/missions");
-  const missions: Missions[] = res.data;
-  return missions.map((mission) => {
-    return {
-      params: {
-        id: mission.id.toString(),
-      },
-    };
-  });
-};
+import { axiosInstance } from "../../../utils/axios";
+import { getAllMissionIds } from "@/functions/getAllMissionIds";
+import { Mission } from "@/types/mission";
+import { Params } from "@/types/params";
+import { DataForm } from "@/types/dataFrom";
 
 export async function getStaticProps({ params }: Params) {
   const res = await axiosInstance.get(`/missions/${params.id}`);
-  const missionData: Missions = res.data;
+  const missionData: Mission = res.data;
   return {
     props: {
       missionData,
@@ -52,11 +26,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function MissionEdit({
-  missionData,
-}: {
-  missionData: Missions;
-}) {
+export default function MissionEdit({ missionData }: { missionData: Mission }) {
   const router = useRouter();
 
   const {

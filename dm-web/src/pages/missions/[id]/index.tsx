@@ -1,36 +1,14 @@
 import Link from "next/link";
+
 import { axiosInstance } from "../../../utils/axios";
 import { Card } from "@/components/atoms/card/card";
-
-type Missions = {
-  id: number;
-  title: string;
-  summary: string;
-  archivement: number | null;
-  dead_line: Date | null;
-  created_at: Date;
-  update_at: Date;
-};
-
-type Params = {
-  params: { id: number };
-};
-
-const getAllMissionIds = async () => {
-  const res = await axiosInstance.get("/missions");
-  const missions: Missions[] = res.data;
-  return missions.map((mission) => {
-    return {
-      params: {
-        id: mission.id.toString(),
-      },
-    };
-  });
-};
+import { getAllMissionIds } from "@/functions/getAllMissionIds";
+import { Mission } from "@/types/mission";
+import { Params } from "@/types/params";
 
 export async function getStaticProps({ params }: Params) {
   const res = await axiosInstance.get(`/missions/${params.id}`);
-  const missionData: Missions = res.data;
+  const missionData: Mission = res.data;
   return {
     props: {
       missionData,
@@ -46,11 +24,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function MissionShow({
-  missionData,
-}: {
-  missionData: Missions;
-}) {
+export default function MissionShow({ missionData }: { missionData: Mission }) {
   return (
     <>
       <div className={`text-center space-y-4 pt-10`}>
