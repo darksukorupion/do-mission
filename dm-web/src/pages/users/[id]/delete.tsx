@@ -1,38 +1,15 @@
 import Link from "next/link";
-import { axiosInstance } from "../../../utils/axios";
 import { useRouter } from "next/router";
+
+import { axiosInstance } from "../../../utils/axios";
 import { Card } from "@/components/atoms/card/card";
-
-type Users = {
-  id: number;
-  name: string;
-  email: string;
-  password: string | null;
-  profile_image: string | null;
-  level: number | null;
-  created_at: Date;
-  update_at: Date;
-};
-
-type Params = {
-  params: { id: number };
-};
-
-const getAllUserIds = async () => {
-  const res = await axiosInstance.get("/users");
-  const users: Users[] = res.data;
-  return users.map((user) => {
-    return {
-      params: {
-        id: user.id.toString(),
-      },
-    };
-  });
-};
+import { User } from "@/types/user";
+import { Params } from "@/types/params";
+import { getAllUserIds } from "@/functions/getAllUserIds";
 
 export async function getStaticProps({ params }: Params) {
   const res = await axiosInstance.get(`/users/${params.id}`);
-  const userData: Users = res.data;
+  const userData: User = res.data;
   return {
     props: {
       userData,
@@ -48,7 +25,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function UserDelete({ userData }: { userData: Users }) {
+export default function UserDelete({ userData }: { userData: User }) {
   const name = userData.name;
   const email = userData.email;
   const router = useRouter();

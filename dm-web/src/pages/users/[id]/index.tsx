@@ -1,37 +1,14 @@
 import Link from "next/link";
+
 import { axiosInstance } from "../../../utils/axios";
+import { getAllUserIds } from "@/functions/getAllUserIds";
 import { Card } from "@/components/atoms/card/card";
-
-type Users = {
-  id: number;
-  name: string;
-  email: string;
-  password: string | null;
-  profile_image: string | null;
-  level: number | null;
-  created_at: Date;
-  update_at: Date;
-};
-
-type Params = {
-  params: { id: number };
-};
-
-const getAllUserIds = async () => {
-  const res = await axiosInstance.get("/users");
-  const users: Users[] = res.data;
-  return users.map((user) => {
-    return {
-      params: {
-        id: user.id.toString(),
-      },
-    };
-  });
-};
+import { User } from "@/types/user";
+import { Params } from "@/types/params";
 
 export async function getStaticProps({ params }: Params) {
   const res = await axiosInstance.get(`/users/${params.id}`);
-  const userData: Users = res.data;
+  const userData: User = res.data;
   return {
     props: {
       userData,
@@ -47,7 +24,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function UserShow({ userData }: { userData: Users }) {
+export default function UserShow({ userData }: { userData: User }) {
   return (
     <>
       <div className={`text-center space-y-4 pt-10`}>

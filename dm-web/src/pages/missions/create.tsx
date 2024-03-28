@@ -1,12 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { axiosInstance } from "../../utils/axios";
 
-type DataForm = {
-  title: string;
-  summary: string;
-};
+import { axiosInstance } from "../../utils/axios";
+import { DataForm } from "@/types/dataFrom";
 
 export default function MissionCreate() {
   const router = useRouter();

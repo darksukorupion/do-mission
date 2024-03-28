@@ -1,43 +1,16 @@
 import Link from "next/link";
-import { axiosInstance } from "../../../utils/axios";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
-type UserForm = {
-  name: string;
-  email: string;
-};
-
-type Users = {
-  id: number;
-  name: string;
-  email: string;
-  password: string | null;
-  profile_image: string | null;
-  level: number | null;
-  created_at: Date;
-  update_at: Date;
-};
-
-type Params = {
-  params: { id: number };
-};
-
-const getAllUserIds = async () => {
-  const res = await axiosInstance.get("/users");
-  const users: Users[] = res.data;
-  return users.map((user) => {
-    return {
-      params: {
-        id: user.id.toString(),
-      },
-    };
-  });
-};
+import { axiosInstance } from "../../../utils/axios";
+import { getAllUserIds } from "@/functions/getAllUserIds";
+import { User } from "@/types/user";
+import { UserForm } from "@/types/userForm";
+import { Params } from "@/types/params";
 
 export async function getStaticProps({ params }: Params) {
   const res = await axiosInstance.get(`/users/${params.id}`);
-  const userData: Users = res.data;
+  const userData: User = res.data;
   return {
     props: {
       userData,
@@ -53,7 +26,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function UserEdit({ userData }: { userData: Users }) {
+export default function UserEdit({ userData }: { userData: User }) {
   const router = useRouter();
 
   const {

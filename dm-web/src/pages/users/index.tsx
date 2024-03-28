@@ -1,25 +1,13 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-import { PrimaryButton } from "@/components/atoms/botton/PrimaryButton";
 import { axiosInstance } from "@/utils/axios";
-
-import React from "react";
+import { PrimaryButton } from "@/components/atoms/botton/PrimaryButton";
 import { Card } from "@/components/atoms/card/card";
-
-type Users = {
-  id: number;
-  name: string;
-  email: string;
-  password: string | null;
-  profile_image: string | null;
-  level: number | null;
-  created_at: Date;
-  update_at: Date;
-};
+import { User } from "@/types/user";
 
 export default function UsersIndex() {
-  const [users, setUsers] = useState<Users[]>();
+  const [users, setUsers] = useState<User[]>();
 
   useEffect(() => {
     const f = async () => {

@@ -1,24 +1,13 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-import { PrimaryButton } from "@/components/atoms/botton/PrimaryButton";
 import { axiosInstance } from "@/utils/axios";
-
-import React from "react";
+import { PrimaryButton } from "@/components/atoms/botton/PrimaryButton";
 import { Card } from "@/components/atoms/card/card";
-
-type Missions = {
-  id: number;
-  title: string;
-  summary: string;
-  archivement: number | null;
-  dead_line: Date | null;
-  created_at: Date;
-  update_at: Date;
-};
+import { Mission } from "@/types/mission";
 
 export default function MissionsIndex() {
-  const [missions, setMissions] = useState<Missions[]>();
+  const [missions, setMissions] = useState<Mission[]>();
 
   useEffect(() => {
     const f = async () => {
