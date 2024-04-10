@@ -66,7 +66,7 @@ export default function MissionCreate() {
             />
           </div>
 
-          <p className={`error`}>{errors.datetime?.message}</p>
+          {/* <p className={`error`}>{errors.datetime?.message}</p> */}
 
           <div>
             <button type="submit" className={`primary-button`}>
