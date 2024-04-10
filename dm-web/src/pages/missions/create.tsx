@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { axiosInstance } from "../../utils/axios";
 import { DataForm } from "@/types/dataFrom";
-// import { DatePicker } from "@/functions/datePicker";
+import { DatePicker } from "@/functions/datePicker";
 
 export default function MissionCreate() {
   const router = useRouter();
@@ -12,8 +12,8 @@ export default function MissionCreate() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     control,
+    formState: { errors },
   } = useForm<DataForm>();
 
   const onSubmit = async (data: DataForm) => {
@@ -55,14 +55,18 @@ export default function MissionCreate() {
           <p className={`error`}>{errors.summary?.message}</p>
 
           {/* <label htmlFor="締め切り">締め切り</label>
-          <br />
-          <DatePicker
-            label="datetime"
-            name="datetime"
-            control={control}
-            error={errors.datetime?.message}
-          />
-          <p className={`error`}>{errors.datetime?.message}</p> */}
+          <br /> */}
+          <div>
+            <DatePicker
+              label="締め切り"
+              name="datetime"
+              control={control}
+              error={errors.datetime?.message}
+              className={`input stdWidth`}
+            />
+          </div>
+
+          <p className={`error`}>{errors.datetime?.message}</p>
 
           <div>
             <button type="submit" className={`primary-button`}>

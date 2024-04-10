@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Control, Controller, Path } from "react-hook-form";
@@ -8,10 +7,9 @@ type Props<T> = {
   name: Path<T>;
   error?: string;
   control: Control;
-  timeIntervals?: number;
 };
 
-export const DatePicker = ({ label, name, control, error }) => {
+export const DatePicker = <T,>({ label, name, control, error }: Props<T>) => {
   const startDate = new Date();
 
   const endDate = new Date(startDate);
@@ -26,13 +24,13 @@ export const DatePicker = ({ label, name, control, error }) => {
           name={name}
           render={({ field: { onChange, value } }) => (
             <ReactDatePicker
+              className={`input`}
+              placeholderText={"日付を選択"}
               selected={value}
-              dateFormat="yyyy-MM-dd"
+              dateFormat="yyyy/MM/dd"
               onChange={onChange}
               minDate={startDate}
               maxDate={endDate}
-              // showTimeSelect
-              // timeIntervals={timeIntervals}
             />
           )}
         />
