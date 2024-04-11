@@ -29,6 +29,6 @@ class MissionsController < ApplicationController
   private
  
   def mission_params
-    params.require(:mission).permit(:title, :summary)
+    params.require(:mission).permit(:title, :summary, :datetime)
   end
 end

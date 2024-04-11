@@ -17,8 +17,8 @@ export default function MissionCreate() {
   } = useForm<DataForm>();
 
   const onSubmit = async (data: DataForm) => {
-    const { title, summary } = data;
-    await axiosInstance.post("/missions", { title, summary });
+    const { title, summary, datetime } = data;
+    await axiosInstance.post("/missions", { title, summary, datetime });
     router.push("/missions");
   };
 
@@ -27,7 +27,7 @@ export default function MissionCreate() {
       <div className={`text-center space-y-4 pt-10`}>
         <h1 className={`headingMd`}>ミッションの新規作成</h1>
         <form onSubmit={handleSubmit(onSubmit)} className={`space-y-2`}>
-          <label htmlFor="タイトル">タイトル</label>
+          <label htmlFor="title">タイトル</label>
           <br />
           <input
             id="title"
@@ -41,7 +41,7 @@ export default function MissionCreate() {
           />
           <p className={`error`}>{errors.title?.message}</p>
 
-          <label htmlFor="概要">概要</label>
+          <label htmlFor="summary">概要</label>
           <br />
           <textarea
             id="summary"
@@ -54,19 +54,14 @@ export default function MissionCreate() {
           />
           <p className={`error`}>{errors.summary?.message}</p>
 
-          {/* <label htmlFor="締め切り">締め切り</label>
-          <br /> */}
-          <div>
-            <DatePicker
-              label="締め切り"
-              name="datetime"
-              control={control}
-              error={errors.datetime?.message}
-              className={`input stdWidth`}
-            />
-          </div>
-
-          {/* <p className={`error`}>{errors.datetime?.message}</p> */}
+          <label htmlFor="datetime">締め切り</label>
+          <br />
+          <DatePicker
+            name="datetime"
+            control={control}
+            // error={errors.datetime?.message}
+          />
+          <p className={`error`}>{errors.datetime?.message}</p>
 
           <div>
             <button type="submit" className={`primary-button`}>

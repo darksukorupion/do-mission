@@ -3,13 +3,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Control, Controller, Path } from "react-hook-form";
 
 type Props<T> = {
-  label: string;
   name: Path<T>;
   error?: string;
   control: Control;
 };
 
-export const DatePicker = <T,>({ label, name, control, error }: Props<T>) => {
+export const DatePicker = <T,>({ name, control, error }: Props<T>) => {
   const startDate = new Date();
 
   const endDate = new Date(startDate);
@@ -17,7 +16,6 @@ export const DatePicker = <T,>({ label, name, control, error }: Props<T>) => {
 
   return (
     <>
-      <label htmlFor={name}>{label}</label>
       <div>
         <Controller
           control={control}
@@ -25,7 +23,7 @@ export const DatePicker = <T,>({ label, name, control, error }: Props<T>) => {
           render={({ field: { onChange, value } }) => (
             <ReactDatePicker
               className={`input`}
-              placeholderText={"日付を選択"}
+              placeholderText={"日付を選択(任意)"}
               selected={value}
               dateFormat="yyyy/MM/dd"
               onChange={onChange}
@@ -35,7 +33,6 @@ export const DatePicker = <T,>({ label, name, control, error }: Props<T>) => {
           )}
         />
       </div>
-      <span>{error}</span>
     </>
   );
 };

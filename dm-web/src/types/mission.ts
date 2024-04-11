@@ -3,7 +3,7 @@ export type Mission = {
   title: string;
   summary: string;
   archivement: number | null;
-  dead_line: Date | null;
+  datetime: string | null;
   created_at: Date;
   update_at: Date;
 };

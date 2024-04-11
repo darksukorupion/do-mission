@@ -27,10 +27,8 @@ export default function MissionsIndex() {
             <Link href={`/missions/${mission.id}`} key={mission.id}>
               <Card>
                 <div className={`flex justify-between p-4`}>
-                  <li className={`text-blue-600 hover:text-blue-400  `}>
-                    {mission.title}
-                  </li>
-                  <p>残り3日</p>
+                  <li className={`link`}>{mission.title}</li>
+                  <p>{mission.datetime}</p>
                 </div>
               </Card>
             </Link>
