@@ -18,6 +18,8 @@ export default function MissionCreate() {
 
   const onSubmit = async (data: DataForm) => {
     const { title, summary, datetime } = data;
+    datetime.setDate(datetime.getDate() + 1);
+    console.log(datetime);
     await axiosInstance.post("/missions", { title, summary, datetime });
     router.push("/missions");
   };
@@ -59,7 +61,7 @@ export default function MissionCreate() {
           <DatePicker
             name="datetime"
             control={control}
-            // error={errors.datetime?.message}
+            error={errors.datetime?.message}
           />
           <p className={`error`}>{errors.datetime?.message}</p>
 
