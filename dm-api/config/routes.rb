@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   post "login" => "users#login"
 
-  resources :missions, :users
+  resources :missions, :users, :tasks
 
   # # ミッション一覧
   # get "/missions" => "missions#index"
